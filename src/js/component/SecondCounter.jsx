@@ -1,6 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+library.add(faClock);
+
+
 const styleIn = {
 	general: { 
 			backgroundColor: "black",
@@ -25,7 +32,7 @@ function SimpleCounter(props){
         <main className = "container-flex">
 			<div style = {styleIn.general}>
 				<div style = {styleIn.element}>
-					<i className="fa-regular fa-clock fa-lg"></i>
+                <FontAwesomeIcon icon={faClock} size="1x" />
 				</div>
 				<div style = {styleIn.element}>{props.numberSix}</div>
 				<div style = {styleIn.element}>{props.numberFive}</div>
