@@ -25,7 +25,7 @@ const styleIn = {
 		}
 }
 
-function SimpleCounter(props){
+function SecondCounter(props){
 
 	const [counter, setCounter] = useState(0);
 
@@ -58,4 +58,4 @@ function SimpleCounter(props){
     );
 }
 
-export default SimpleCounter;
+export default SecondCounter;

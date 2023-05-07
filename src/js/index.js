@@ -11,5 +11,7 @@ import SecondCounter from "./component/SecondCounter.jsx";
 
 //render your react application
 
-ReactDOM.render(<SecondCounter/>, document.querySelector("#app"));
+ReactDOM.render(
+        <SecondCounter/>
+        , document.querySelector("#app"));
 
