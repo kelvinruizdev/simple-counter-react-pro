@@ -1,12 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 library.add(faClock);
-
 
 const styleIn = {
 	general: { 
@@ -28,31 +26,36 @@ const styleIn = {
 }
 
 function SimpleCounter(props){
+
+	const [counter, setCounter] = useState(0);
+
+	useEffect(()=>{
+		let setIntervalId = setInterval(() => {
+            setCounter(counter + 1)
+        }, 200)
+        
+        return () => {
+            clearInterval(setIntervalId)
+        }
+
+	},[counter])
+
+
     return(
         <main className = "container-flex">
 			<div style = {styleIn.general}>
 				<div style = {styleIn.element}>
                 <FontAwesomeIcon icon={faClock} size="1x" />
 				</div>
-				<div style = {styleIn.element}>{props.numberSix}</div>
-				<div style = {styleIn.element}>{props.numberFive}</div>
-				<div style = {styleIn.element}>{props.numberFour}</div>
-				<div style = {styleIn.element}>{props.numberThree}</div>
-				<div style = {styleIn.element}>{props.numberTwo}</div>
-				<div style = {styleIn.element}>{props.numberOne}</div>
+				<div style = {styleIn.element}>{Math.floor(counter / 100000) % 10 }</div>
+				<div style = {styleIn.element}>{Math.floor(counter / 10000) % 10 }</div>
+				<div style = {styleIn.element}>{Math.floor(counter / 1000) % 10 }</div>
+				<div style = {styleIn.element}>{Math.floor(counter / 100) % 10 }</div>
+				<div style = {styleIn.element}>{Math.floor(counter / 10) % 10 }</div>
+				<div style = {styleIn.element}>{Math.floor(counter / 1) % 10 }</div>
 			</div>
 		</main>
     );
-}
-
-SimpleCounter.propTypes = {
-	style : PropTypes.string,
-	numberOne : PropTypes.number,
-	numberTwo : PropTypes.number,	
-	numberThree : PropTypes.number,
-	numberFour : PropTypes.number,
-	numberFive : PropTypes.number,
-	numberSix : PropTypes.number
 }
 
 export default SimpleCounter;
